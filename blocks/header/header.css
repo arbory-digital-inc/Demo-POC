@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--background-color-3);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -18,7 +18,6 @@ header nav {
   max-width: 100%;
   height: var(--nav-height);
   padding: 0 24px;
-  font-family: var(--body-font-family);
 }
 
 header nav[aria-expanded='true'] {
@@ -36,7 +35,7 @@ header nav[aria-expanded='true'] {
     justify-content: space-between;
     gap: 0 32px;
     max-width: var(--desktop-max-width);
-    padding: 0 32px;
+    padding: 0 ;
   }
 
   header nav[aria-expanded='true'] {
@@ -48,6 +47,8 @@ header nav[aria-expanded='true'] {
 header nav p {
   margin: 0;
   line-height: 1;
+  font-family: var(--heading-font-family);
+  font-weight: 200;
 }
 
 header nav a:any-link {
@@ -202,7 +203,7 @@ header nav .nav-sections ul > li > ul > li {
     content: '';
     display: inline-block;
     position: absolute;
-    top: 0.5em;
+    top: 0.2em;
     right: 2px;
     transform: rotate(135deg);
     width: 6px;
@@ -214,7 +215,7 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
     top: unset;
-    bottom: 0.5em;
+    bottom: 0.2em;
     transform: rotate(315deg);
   }
 
@@ -222,6 +223,7 @@ header nav .nav-sections ul > li > ul > li {
     display: flex;
     gap: 24px;
     margin: 0;
+    align-items: center;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
@@ -241,8 +243,10 @@ header nav .nav-sections ul > li > ul > li {
     width: 200px;
     top: 150%;
     padding: 16px;
-    background-color: var(--light-color);
+    background-color: var(--background-color-4);
+    box-shadow: var(--box-shadow);
     white-space: initial;
+    border-radius: 0.35rem;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
@@ -254,7 +258,7 @@ header nav .nav-sections ul > li > ul > li {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
+    border-bottom: 8px solid var(--background-color-4);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
@@ -265,4 +269,9 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* Align the last navigation item to the end of the container */
+header nav .nav-sections ul > li:last-child {
+  margin-left: auto;
 }

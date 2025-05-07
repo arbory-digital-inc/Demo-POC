@@ -16,13 +16,27 @@ header .sub-header {
     display: flex;
     margin: 0 auto;
     height: var(--sub-nav-height);
-    padding: 0 32px;
+    padding: 0 12px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    p {
+    p{
       margin: 0;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .button-container p a{
+      text-shadow:none !important;
+      padding: 0.5rem 1rem;
+      background-color: var(--background-color-2);
+      color: var(--text-color);
+    }
+    .button-container p a:hover{
+      background-color: var(--background-color-4);
+      color: var(--text-color);
     }
   }
 }

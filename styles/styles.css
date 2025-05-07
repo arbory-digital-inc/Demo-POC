@@ -14,16 +14,30 @@
   --desktop-max-width: 1264px;
 
   /* colors */
-  --background-color: #0d0d0d;
+  --background-color: #000; /* main base */
+  --background-color-2: #121212; /* cards, sections, split containers */
+  --background-color-3: #1e1e1e; /* nav, modals, anything floating */
+  --background-color-4: #2a2a2a; /* hover effects, dropdowns, overlays */
+  --dark-hover-1: #2a2a2a;
   --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #fff;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --dark-color: #1d1d1d;
+  --text-color: #f2f2f2;
+  --secondary-text-color: #a0a0a0;
+  --primary-accent-color: #fce83a;
+  --primary-accent-color-hover: #1ec8e8;
+  --secondary-accent-color: #1ec8e8;
+  --secondary-accent-color-hover: #fce83a;
+  --tertiary-accent-color: #8f00ff;
+  --gradient-overlay: radial-gradient(circle at 50% 50%, #fce83a, #a68000, #1e1e1e);
+  --gradient-overlay-2: linear-gradient(135deg, #fff688 0%, #fce83a 40%, #f7c600 80%, #a68000 100%);
+  --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  --box-shadow-hover: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  --link-color: #fce83a;
+  --link-hover-color: #f2f2f2;
 
   /* fonts */
   --body-font-family: figtree, figtree-italic, roboto-fallback, sans-serif;
-  --heading-font-family: figtree, figtree-italic, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: sora, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -117,6 +131,7 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
+  letter-spacing: -1px;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -180,30 +195,44 @@ button {
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
+  border: none;
+  border-radius: 0.35em;
   padding: 0.5em 1.2em;
-  font-family: var(--body-font-family);
+  font-family: var(--heading-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.25;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: var(--primary-accent-color);
+  color: var(--background-color-4);
+  box-shadow: var(--box-shadow);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: white;
+  color: black;
+  box-shadow: var(--box-shadow-hover);
   cursor: pointer;
+}
+
+a.button:active,
+button:active {
+  background: var(--background-color);
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 10px white;
+  transition: all 0.05s ease-out;
 }
 
 button:disabled,
