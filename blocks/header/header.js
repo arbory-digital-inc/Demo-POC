@@ -162,5 +162,19 @@ export default async function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
+
+  // check for sub-header
+  const subHeader = document.querySelector('.sub-header');
+  if (subHeader) {
+    block.closest('header').classList.add('has-sub-header');
+    const subHeaderWrapper = document.createElement('div');
+    subHeaderWrapper.className = 'section sub-header-wrapper';
+    subHeaderWrapper.append(subHeader);
+    navWrapper.append(subHeaderWrapper);
+    // remove old sub-header
+    const oldSubHeader = document.querySelector('.sub-header-container');
+    oldSubHeader.remove();
+  }
+
   block.append(navWrapper);
 }

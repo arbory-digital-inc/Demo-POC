@@ -11,11 +11,13 @@
  */
 
 :root {
+  --desktop-max-width: 1264px;
+
   /* colors */
   --background-color: #0d0d0d;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #ffffff;
+  --text-color: #fff;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
@@ -38,6 +40,7 @@
 
   /* nav height */
   --nav-height: 64px;
+  --sub-nav-height: 64px;
 }
 
 /* fallback fonts */
@@ -86,6 +89,10 @@ body.appear {
 
 header {
   height: var(--nav-height);
+
+  &.has-sub-header {
+    height: calc(var(--nav-height) + var(--sub-nav-height));
+  }
 }
 
 header .header,
@@ -235,7 +242,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--desktop-max-width);
   margin: auto;
   padding: 0 24px;
 }
