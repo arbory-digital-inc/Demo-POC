@@ -6,28 +6,63 @@
 .hero {
   position: relative;
   padding: 40px 24px;
-  min-height: 300px;
+  background: var(--hero-background);
+  max-height: 90vh;
+  min-height: 20vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  > div {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
-.hero h1 {
-  max-width: 1200px;
+.hero h1,
+.hero h2 {
+  margin: 10px 0 16px;
+}
+
+.hero.black-header h1 {
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
 }
 
-.hero picture {
+.hero .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero video.video-bg {
+  width: 120vw;
+  height: auto;
   position: absolute;
+  inset: 1px 50%;
+  transform: translateX(-50%);
   z-index: -1;
-  inset: 0;
+}
+
+.hero picture.img-bg {
+  position: absolute;
+  width: 120vw;
+  z-index: -1;
+  inset: 1px 50%;
+  transform: translateX(-50%);
   object-fit: cover;
   box-sizing: border-box;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero.fixed-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @media (width >= 900px) {
