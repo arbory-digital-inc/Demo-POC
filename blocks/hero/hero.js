@@ -16,7 +16,7 @@ function decorateVideoBg(block) {
   block.prepend(videoEl);
 }
 
-function decorateBg(block) {
+function decorateBackground(block) {
   const bg = block.querySelector(':scope > div');
   if (bg) {
     const vid = bg.querySelector('a')?.href.endsWith('.mp4');
@@ -75,7 +75,7 @@ function parallaxBg(block) {
 }
 
 export default async function decorate(block) {
-  if (block.children.length > 1) decorateBg(block);
+  if (block.children.length > 1) decorateBackground(block);
   const content = block.querySelector(':scope > div');
   content.className = 'content-wrapper';
   if (block.classList.contains('parallax')) parallaxBg(block);
