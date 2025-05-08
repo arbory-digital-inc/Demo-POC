@@ -30,8 +30,8 @@
   --tertiary-accent-color: #8f00ff;
   --gradient-overlay: radial-gradient(circle at 50% 50%, #fce83a, #a68000, #1e1e1e);
   --gradient-overlay-2: linear-gradient(135deg, #fff688 0%, #fce83a 40%, #f7c600 80%, #a68000 100%);
-  --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  --box-shadow-hover: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  --box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
+  --box-shadow-hover: rgb(0 0 0 16%) 0px 3px 6px, rgb(0 0 0 23%) 0px 3px 6px;
   --link-color: #fce83a;
   --link-hover-color: #f2f2f2;
 
@@ -119,6 +119,23 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -132,6 +149,10 @@ h6 {
   line-height: 1.25;
   scroll-margin: 40px;
   letter-spacing: -1px;
+
+  .icon {
+    margin-right: 8px;
+  }
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -246,23 +267,6 @@ button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color);
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-}
-
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
-
-.icon img {
-  height: 100%;
-  width: 100%;
 }
 
 /* sections */
