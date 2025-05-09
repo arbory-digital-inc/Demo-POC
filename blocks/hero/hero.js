@@ -54,7 +54,7 @@ function decorateContentMeta(block) {
       metaData.shift();
       const [key, value] = metaData;
       const content = meta.closest('div');
-      if (key.trim() === 'variant') {
+      if (key.trim() === 'style') {
         content.classList.add(value.trim());
       } else {
         content.style.setProperty(key.trim(), value.trim());
