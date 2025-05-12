@@ -94,6 +94,17 @@
   }
 }
 
+.video-error-message {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-left: 20px;
+  background-color: white;
+  color: red;
+  border-radius: 0 0 0 10px;
+  font-size: 0.8em;
+}
+
 @media (width >= 900px) {
   .hero {
     padding: 40px 32px;
