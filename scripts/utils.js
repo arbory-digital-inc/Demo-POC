@@ -26,7 +26,7 @@ function throttle(fnc, delay) {
  * @returns {HTMLVideoElement} Configured video element
  */
 function createVideo(
-  link,
+  href,
   onError = null,
   config = {
     autoplay: true,
@@ -39,7 +39,7 @@ function createVideo(
   Object.assign(videoEl, config);
   if (onError) videoEl.addEventListener('error', onError);
   const sourceEl = document.createElement('source');
-  sourceEl.src = link.href;
+  sourceEl.src = href;
   sourceEl.type = 'video/mp4';
   if (onError) sourceEl.addEventListener('error', onError);
   videoEl.appendChild(sourceEl);
@@ -69,8 +69,16 @@ function useContentMeta(block) {
   });
 }
 
+/**
+ * Returns user agent data to check if is mobile
+ */
+function isMobileDevice() {
+  return navigator.userAgentData.mobile || window.innerWidth <= 800;
+}
+
 export {
   throttle,
   createVideo,
   useContentMeta,
+  isMobileDevice,
 };
