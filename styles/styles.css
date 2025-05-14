@@ -262,16 +262,34 @@ button:disabled:hover {
   cursor: unset;
 }
 
-a.button.secondary,
-button.secondary {
+a.button.outline,
+button.outline {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color);
 }
 
+a.button.secondary,
+button.secondary {
+  background-color: var(--secondary-accent-color);
+}
+
+a.button.tertiary,
+button.tertiary {
+  background-color: var(--tertiary-accent-color);
+}
+
+.button-group,
+.button-group p {
+  display: flex;
+  gap: 10px;
+}
+
 /* sections */
 main > .section {
-  margin: 40px 0;
+  padding: 40px 0;
+  margin: 0;
+  background-color: var(--background-color);
 }
 
 main > .section > div {
@@ -281,7 +299,7 @@ main > .section > div {
 }
 
 main > .section:first-of-type {
-  margin-top: 0;
+  padding: 0;
 }
 
 @media (width >= 900px) {
@@ -296,4 +314,56 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* Animated Buttons */
+a.button.animate {
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-accent-color);
+    z-index: -2;
+  }
+
+  &.outline {
+    &::after {
+      background-color: unset;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-accent-color-hover);
+    transition: all .3s;
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: #fff;
+
+    &::before {
+      width: 100%;
+    }
+  }
+}
+
+a.button.massive {
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.15rem;
 }

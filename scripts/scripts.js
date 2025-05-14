@@ -1,7 +1,6 @@
 import {
   loadHeader,
   loadFooter,
-  decorateButtons,
   decorateIcons,
   decorateSections,
   decorateBlocks,
@@ -11,6 +10,9 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+
+import decorateButtons from './buttons.js';
+import { sheetData } from './utils.js';
 
 /**
  * load fonts.css and set a session storage flag
@@ -46,6 +48,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    await sheetData('placeholders');
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

@@ -1,3 +1,5 @@
+const SHEETDATA = {};
+
 /**
  * Throttles a function to limit its execution rate
  * @param {Function} fnc - The function to throttle
@@ -76,8 +78,36 @@ function isMobileDevice() {
   return navigator.userAgentData.mobile || window.innerWidth <= 800;
 }
 
+/**
+ * Fetches data from a given source
+ * @param {string} source - The URL of the data source
+ * @param {string} type - The type of data to fetch
+ * @returns {Promise<Object>} The parsed JSON data
+ */
+async function sheetData(source, type = null) {
+  if (SHEETDATA[source]) return type ? SHEETDATA[source]?.[type]?.data : SHEETDATA[source].data;
+
+  const response = await fetch(`/${source}.json`);
+  if (!response.ok) {
+    // eslint-disable-next-line no-console
+    console.error('error loading API response', response);
+    return null;
+  }
+
+  const json = await response.json();
+  if (!json) {
+    // eslint-disable-next-line no-console
+    console.error('empty API response', source);
+    return null;
+  }
+
+  SHEETDATA[source] = json;
+  return type ? SHEETDATA[source]?.[type]?.data : SHEETDATA[source].data;
+}
+
 export {
   throttle,
+  sheetData,
   createVideo,
   useContentMeta,
   isMobileDevice,
