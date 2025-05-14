@@ -1,12 +1,14 @@
 footer {
-  background-color: var(--background-color-2);
   font-size: var(--body-font-size-xs);
+  margin-bottom: 2rem;
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
+  background-color: var(--background-color-2);
   padding: 40px 24px 24px;
+  border-radius: 1rem;
 }
 
 footer .footer p {
@@ -16,5 +18,21 @@ footer .footer p {
 @media (width >= 900px) {
   footer .footer > div {
     padding: 40px 32px 24px;
+  }
+}
+
+footer .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  & > div > p > picture {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
   }
 }

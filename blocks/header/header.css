@@ -200,23 +200,21 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .nav-drop::after {
-    content: '';
+    content: '+';
     display: inline-block;
     position: absolute;
-    top: 0.2em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
+    top: 50%;
+    right: 0;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
   }
 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.2em;
-    transform: rotate(315deg);
+    content: '−'; /* Using the minus sign character */
+    transform: translateY(-50%) rotate(180deg);
   }
 
   header nav .nav-sections ul {
@@ -236,33 +234,40 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+  header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: block;
     position: absolute;
     left: -24px;
     width: 200px;
-    top: 150%;
-    padding: 16px;
+    top: 200%;
+    padding: 0;
     background-color: var(--background-color-4);
     box-shadow: var(--box-shadow);
     white-space: initial;
     border-radius: 0.35rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--background-color-4);
-  }
+
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
+    padding: 12px 16px;
+    transition: background-color 0.2s ease;
+  }
+  
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li:hover {
+    background-color: var(--background-color-3);
   }
 }
 
@@ -271,7 +276,70 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-/* Align the last navigation item to the end of the container */
+/* Align the last navigation item to the end of the container and style it as a button */
 header nav .nav-sections ul > li:last-child {
   margin-left: auto;
+}
+
+/* Style only the last top-level navigation item as a button */
+header nav .nav-sections > .default-content-wrapper > ul > li:last-child > a:first-child {
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 0.35em;
+  padding: 0.5em 1.2em;
+  font-family: var(--heading-font-family);
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  background-color: var(--primary-accent-color);
+  color: var(--background-color-4);
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header nav .nav-sections > .default-content-wrapper > ul > li:last-child > a:first-child:hover,
+header nav .nav-sections > .default-content-wrapper > ul > li:last-child > a:first-child:focus {
+  background-color: white;
+  color: black;
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* Ensure dropdown links are never styled as buttons, even in the last nav item */
+header nav .nav-sections ul > li > ul > li a {
+  background-color: transparent;
+  color: var(--text-color);
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  text-transform: none;
+  border-radius: 0;
+  font-weight: 400;
+  letter-spacing: normal;
+  display: inline;
+}
+
+header nav .nav-sections ul > li > ul > li a:hover,
+header nav .nav-sections ul > li > ul > li a:focus {
+  background-color: transparent;
+  color: var(--link-hover-color);
+  box-shadow: none;
+}
+
+/* Remove button styling from all other navigation links */
+header nav .nav-sections ul > li:not(:last-child) a.button {
+  background-color: transparent;
+  color: var(--text-color);
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  text-transform: none;
+  border-radius: 0;
+}
+
+header nav .nav-sections ul > li:not(:last-child) a.button:hover,
+header nav .nav-sections ul > li:not(:last-child) a.button:focus {
+  background-color: transparent;
+  color: var(--link-hover-color);
+  box-shadow: none;
 }

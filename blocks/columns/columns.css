@@ -42,3 +42,21 @@
     order: unset;
   }
 }
+
+
+.columns.img-row{
+  display: flex;
+  flex-direction: row;
+  max-width: var(--desktop-max-width);
+  margin: auto;
+
+  img {
+    max-width: 120px;
+    height: auto;
+    transition: border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  img:hover{
+    border-radius: 2rem;
+  }
+}
