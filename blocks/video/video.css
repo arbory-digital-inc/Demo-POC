@@ -2,6 +2,7 @@
   text-align: center;
   max-width: 900px;
   margin: 24px auto;
+  border-radius: var(--border-radius);
 }
 
 .video[data-embed-loaded='false']:not(.placeholder) {

@@ -1,67 +1,157 @@
+.table-container {
+  h1,h2,h3,h4,h5,h6 {
+    text-align: var(--heading-align);
+  }
+}
+
 .table {
   width: 100%;
   overflow-x: auto;
-}
+  margin: 2rem auto;
+  max-width: var(--desktop-max-width);
+  
+  table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    
+    thead {
+      tr {
+        background-color: var(--primary-accent-color);
+        color: var(--background-color);
+      }
+    }
+    
+    tbody {
+      background-color: var(--background-color-2);
 
-.table table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-  font-size: var(--body-font-size-xs);
-}
-
-@media (width >= 600px) {
-  .table table {
-    font-size: var(--body-font-size-s);
+      tr {
+        border-bottom: 1px solid var(--background-color-4);
+        transition: background-color 0.2s ease-in-out;
+        
+        &:hover {
+          background-color: var(--background-color-3);
+        }
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+    
+    th {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 1.5rem;
+    }
+    
+    th,
+    td {
+      padding: 1rem;
+      text-align: left;
+      
+      p {
+        margin: 0;
+        font-size: 1.2rem;
+        
+        & + p {
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+  
+  /* Variants */
+  &.no-header {
+    table tbody tr:first-child {
+      border-top: none;
+    }
+  }
+  
+  &.striped {
+    tbody tr:nth-child(odd) {
+      background-color: var(--background-color-2);
+      
+      &:hover {
+        background-color: var(--background-color-3);
+      }
+    }
+  }
+  
+  &.bordered {
+    table th,
+    table td {
+      border: 1px solid var(--background-color-3);
+    }
   }
 }
 
-@media (width >= 900px) {
-  .table table {
-    font-size: var(--body-font-size-m);
+@media (max-width: 768px) {
+  .table {
+    /* Override desktop tbody background for mobile */
+    tbody {
+      background-color: var(--background-color) !important;
+    }
+    
+    table {
+      th,
+      td {
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+    }
+  
+    /* Stack columns on mobile - applied to all tables by default */
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    
+    table {
+      border: 0;
+    }
+    
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid var(--background-color-3);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    td {
+      position: relative;
+      padding-left: 50% !important;
+      text-align: left;
+      border: none !important;
+      border-bottom: 1px solid var(--background-color-3) !important;
+      
+      &:before {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        content: attr(data-label);
+        color: var(--primary-accent-color);
+      }
+      
+      &:last-child {
+        border-radius: var(--border-radius);
+      }
+    }
   }
-}
-
-.table table thead tr {
-  border-top: 2px solid #dadada;
-  border-bottom: 2px solid #dadada;
-}
-
-.table table tbody tr {
-  border-bottom: 1px solid #dadada;
-}
-
-.table table th {
-  font-weight: 700;
-}
-
-.table table th,
-.table table td {
-  padding: 0.5em;
-  text-align: left;
-}
-
-.table table th p,
-.table table td p {
-  margin: 0;
-}
-
-.table table td p + p {
-  margin-top: 0.25em;
-}
-
-/* no header variant */
-.table.no-header table tbody tr {
-  border-top: 1px solid #dadada;
-}
-
-/* striped variant */
-.table.striped tbody tr:nth-child(odd) {
-  background-color: var(--light-color);
-}
-
-/* bordered variant */
-.table.bordered table th,
-.table.bordered table td {
-  border: 1px solid #dadada;
 }

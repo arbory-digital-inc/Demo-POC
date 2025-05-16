@@ -30,10 +30,13 @@
   --tertiary-accent-color: #8f00ff;
   --gradient-overlay: radial-gradient(circle at 50% 50%, #fce83a, #a68000, #1e1e1e);
   --gradient-overlay-2: linear-gradient(135deg, #fff688 0%, #fce83a 40%, #f7c600 80%, #a68000 100%);
+  --gradient-overlay-3: linear-gradient(145deg, #f0f0f0, #cacaca);
   --box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
   --box-shadow-hover: rgb(0 0 0 16%) 0px 3px 6px, rgb(0 0 0 23%) 0px 3px 6px;
   --link-color: #fce83a;
   --link-hover-color: #f2f2f2;
+  --border-radius: 12px;
+  --border-radius-2: 28px;
 
   /* fonts */
   --body-font-family: figtree, figtree-italic, roboto-fallback, sans-serif;
@@ -51,6 +54,7 @@
   --heading-font-size-m: 27px;
   --heading-font-size-s: 24px;
   --heading-font-size-xs: 22px;
+  --heading-align: center;
 
   /* nav height */
   --nav-height: 64px;

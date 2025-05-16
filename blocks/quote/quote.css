@@ -1,41 +1,122 @@
-.quote blockquote {
-  margin: 0 auto;
-  padding: 0 24px;
-  max-width: 900px;
-}
-
-@media (width >= 900px) {
-  .quote blockquote {
-    padding: 0 32px;
+.quote-container {
+  h1,h2,h3,h4,h5,h6 {
+    text-align: var(--heading-align);
   }
 }
 
-.quote blockquote .quote-quotation {
-  font-size: 120%;
+.quote {
+  margin: 2rem auto;
+  max-width: var(--desktop-max-width);
+  
+  blockquote {
+    position: relative;
+    margin: 0;
+    padding: 2rem;
+    background-color: var(--background-color-2);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+    text-align: center;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Large quote mark in background */
+    &::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 0.5rem;
+      font-size: 8rem;
+      font-family: Georgia, serif;
+      color: var(--primary-accent-color);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    
+    .quote-quotation {
+      position: relative;
+      z-index: 1;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--text-color);
+      max-width: 85%;
+      margin: 0 auto;
+      
+      p {
+        margin: 0;
+        font-size: var(--heading-font-size-m);
+        font-family: var(--heading-font-family);
+      }
+      
+      /* Remove default quote marks since we're using the background one */
+      > :first-child::before,
+      > :last-child::after {
+        content: none;
+      }
+    }
+    
+    .quote-attribution {
+      position: relative;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      
+      p {
+        margin: 0;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-accent-color);
+        color: var(--background-color);
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease-in-out;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+      }
+      
+      /* Remove the default dash */
+      > :first-child::before {
+        content: none;
+      }
+    }
+  }
+  
+  &:hover blockquote .quote-attribution p {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
-.quote blockquote .quote-quotation > :first-child {
-  text-indent: -0.5ch;
-}
-
-.quote blockquote .quote-quotation > :first-child::before,
-.quote blockquote .quote-quotation > :last-child::after {
-  line-height: 0;
-}
-
-.quote blockquote .quote-quotation > :first-child::before {
-  content: "“";
-}
-
-.quote blockquote .quote-quotation > :last-child::after {
-  content: "”";
-}
-
-.quote blockquote .quote-attribution {
-  text-align: right;
-}
-
-.quote blockquote .quote-attribution > :first-child::before {
-  content: "—";
-  padding-right: 0.5ch;
+@media (max-width: 768px) {
+  .quote blockquote {
+    padding: 1.5rem;
+    
+    .quote-quotation {
+      p {
+        font-size: 1rem;
+      }
+    }
+    
+    &::before {
+      font-size: 6rem;
+      top: -0.25rem;
+      left: 0.25rem;
+    }
+    
+    .quote-attribution {
+      bottom: 0.75rem;
+      right: 0.75rem;
+      
+      p {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.75rem;
+      }
+    }
+  }
 }
