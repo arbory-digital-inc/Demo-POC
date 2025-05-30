@@ -172,7 +172,7 @@ export default async function decorate(block) {
     subHeaderWrapper.append(subHeader);
     navWrapper.append(subHeaderWrapper);
     // remove old sub-header
-    const oldSubHeader = document.querySelector('.sub-header-container');
+    const oldSubHeader = document.querySelector('.sub-header-wrapper');
     oldSubHeader.remove();
   }
 
