@@ -28,13 +28,15 @@ header .sub-header {
       align-items: center;
       gap: 4px;
     }
-    .button-container p a{
+
+    .button-container p a {
       text-shadow:none !important;
       padding: 0.5rem 1rem;
       background-color: var(--background-color-2);
       color: var(--text-color);
     }
-    .button-container p a:hover{
+
+    .button-container p a:hover {
       background-color: var(--background-color-4);
       color: var(--text-color);
     }
